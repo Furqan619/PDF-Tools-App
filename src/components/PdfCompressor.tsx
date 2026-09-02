@@ -248,20 +248,20 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
       {/* Main Workspace */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Preset Selector Card */}
-        <div className="p-5 rounded-2xl bg-slate-800/80 border border-slate-700/80 shadow-lg shadow-black/20 space-y-4">
+        <div className="p-5 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-md dark:shadow-lg dark:shadow-black/20 space-y-4 transition-colors">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div>
-              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
-                <Sliders className="w-4 h-4 text-amber-400" />
+              <h2 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300 flex items-center gap-2">
+                <Sliders className="w-4 h-4 text-amber-500 dark:text-amber-400" />
                 Compression Level & Quality Presets
               </h2>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Choose an optimization profile or configure precision quality parameters.
               </p>
             </div>
 
             {selectedPreset !== 'custom' && (
-              <span className="text-[11px] px-2.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-amber-400 font-mono self-start sm:self-auto">
+              <span className="text-[11px] px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-amber-600 dark:text-amber-400 font-mono self-start sm:self-auto">
                 {selectedPreset === 'extreme' && 'DPI ~90 • Quality 48% • Metadata Stripped'}
                 {selectedPreset === 'recommended' && 'DPI ~135 • Quality 72% • Metadata Stripped'}
                 {selectedPreset === 'low' && 'DPI ~180 • Quality 88% • Lossless Retention'}
@@ -276,21 +276,21 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               onClick={() => setSelectedPreset('extreme')}
               className={`p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between space-y-2 ${
                 selectedPreset === 'extreme'
-                  ? 'bg-amber-500/10 border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
-                  : 'bg-slate-800/60 border-slate-700/60 hover:border-slate-600'
+                  ? 'bg-amber-50 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
+                  : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/60 hover:border-slate-300 dark:hover:border-slate-600'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <Zap className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                     Extreme Compression
                   </span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-500/20 text-red-300 font-semibold">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-red-100 dark:bg-red-500/20 text-red-700 dark:text-red-300 font-semibold">
                     ~75% Smaller
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1.5">
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5">
                   Smallest file size. Ideal for strict email attachment limits and low-bandwidth web sharing.
                 </p>
               </div>
@@ -301,21 +301,21 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               onClick={() => setSelectedPreset('recommended')}
               className={`p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between space-y-2 ${
                 selectedPreset === 'recommended'
-                  ? 'bg-amber-500/10 border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
-                  : 'bg-slate-800/60 border-slate-700/60 hover:border-slate-600'
+                  ? 'bg-amber-50 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
+                  : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/60 hover:border-slate-300 dark:hover:border-slate-600'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                     Recommended
                   </span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-semibold">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-300 font-semibold">
                     ~50% Smaller
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1.5">
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5">
                   Optimal balance between sharp visual quality and substantial file size savings.
                 </p>
               </div>
@@ -326,21 +326,21 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               onClick={() => setSelectedPreset('low')}
               className={`p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between space-y-2 ${
                 selectedPreset === 'low'
-                  ? 'bg-amber-500/10 border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
-                  : 'bg-slate-800/60 border-slate-700/60 hover:border-slate-600'
+                  ? 'bg-amber-50 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
+                  : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/60 hover:border-slate-300 dark:hover:border-slate-600'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                     High Quality
                   </span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-300 font-semibold">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-100 dark:bg-blue-500/20 text-blue-700 dark:text-blue-300 font-semibold">
                     ~25% Smaller
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1.5">
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5">
                   Preserves highest visual clarity and vector sharpness. Recommended for documents meant to be printed.
                 </p>
               </div>
@@ -351,21 +351,21 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               onClick={() => setSelectedPreset('custom')}
               className={`p-3.5 rounded-xl border cursor-pointer transition-all flex flex-col justify-between space-y-2 ${
                 selectedPreset === 'custom'
-                  ? 'bg-amber-500/10 border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
-                  : 'bg-slate-800/60 border-slate-700/60 hover:border-slate-600'
+                  ? 'bg-amber-50 dark:bg-amber-500/10 border-amber-300 dark:border-amber-500/70 ring-2 ring-amber-500/30 shadow-md shadow-amber-500/10'
+                  : 'bg-slate-50 dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/60 hover:border-slate-300 dark:hover:border-slate-600'
               }`}
             >
               <div>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-white flex items-center gap-1.5">
-                    <Sliders className="w-3.5 h-3.5 text-amber-400" />
+                  <span className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5">
+                    <Sliders className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                     Custom Settings
                   </span>
-                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-semibold">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-purple-100 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 font-semibold">
                     Manual
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 mt-1.5">
+                <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-1.5">
                   Fine-tune resolution scaling, JPEG quality, metadata stripping, and monochrome mode.
                 </p>
               </div>
@@ -374,12 +374,12 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
 
           {/* Custom Settings Sub-Panel */}
           {selectedPreset === 'custom' && (
-            <div className="mt-4 p-4 rounded-xl bg-slate-900/80 border border-slate-700/60 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fadeIn">
+            <div className="mt-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700/60 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 animate-fadeIn">
               {/* Quality Slider */}
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs">
-                  <span className="text-slate-300 font-medium">JPEG Quality:</span>
-                  <span className="text-amber-400 font-mono">{Math.round(customSettings.quality * 100)}%</span>
+                  <span className="text-slate-700 dark:text-slate-300 font-medium">JPEG Quality:</span>
+                  <span className="text-amber-600 dark:text-amber-400 font-mono">{Math.round(customSettings.quality * 100)}%</span>
                 </div>
                 <input
                   type="range"
@@ -396,8 +396,8 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               {/* Scale Slider */}
               <div className="space-y-1.5">
                 <div className="flex justify-between text-xs">
-                  <span className="text-slate-300 font-medium">Resolution Multiplier:</span>
-                  <span className="text-amber-400 font-mono">{(customSettings.scale * 100).toFixed(0)}%</span>
+                  <span className="text-slate-700 dark:text-slate-300 font-medium">Resolution Multiplier:</span>
+                  <span className="text-amber-600 dark:text-amber-400 font-mono">{(customSettings.scale * 100).toFixed(0)}%</span>
                 </div>
                 <input
                   type="range"
@@ -413,23 +413,23 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               </div>
 
               {/* Grayscale Toggle */}
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer self-center">
+              <label className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 cursor-pointer self-center">
                 <input
                   type="checkbox"
                   checked={customSettings.grayscale}
                   onChange={(e) => setCustomSettings((prev) => ({ ...prev, grayscale: e.target.checked }))}
-                  className="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-amber-500 w-4 h-4"
+                  className="rounded bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-amber-500 focus:ring-amber-500 w-4 h-4"
                 />
                 <span>Convert to Grayscale (Scanned Documents)</span>
               </label>
 
               {/* Strip Metadata Toggle */}
-              <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer self-center">
+              <label className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300 cursor-pointer self-center">
                 <input
                   type="checkbox"
                   checked={customSettings.stripMetadata}
                   onChange={(e) => setCustomSettings((prev) => ({ ...prev, stripMetadata: e.target.checked }))}
-                  className="rounded bg-slate-800 border-slate-700 text-amber-500 focus:ring-amber-500 w-4 h-4"
+                  className="rounded bg-white dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-amber-500 focus:ring-amber-500 w-4 h-4"
                 />
                 <span>Strip Unused Metadata & Objects</span>
               </label>
@@ -451,7 +451,7 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               handleFilesSelected(e.dataTransfer.files);
             }
           }}
-          className="border-2 border-dashed border-slate-700 hover:border-amber-500/60 bg-slate-800/40 hover:bg-slate-800/70 rounded-2xl p-8 text-center cursor-pointer transition-all space-y-3 group"
+          className="border-2 border-dashed border-slate-300 dark:border-slate-700 hover:border-amber-500/60 bg-white dark:bg-slate-800/40 hover:bg-slate-50 dark:hover:bg-slate-800/70 rounded-2xl p-8 text-center cursor-pointer transition-all space-y-3 group shadow-xs dark:shadow-none"
         >
           <input
             ref={fileInputRef}
@@ -463,14 +463,14 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               if (e.target.files) handleFilesSelected(e.target.files);
             }}
           />
-          <div className="w-12 h-12 rounded-2xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+          <div className="w-12 h-12 rounded-2xl bg-amber-50 dark:bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
             <FilePlus className="w-6 h-6" />
           </div>
           <div>
-            <h3 className="text-sm font-bold text-white">
-              Drop PDF documents here to compress, or <span className="text-amber-400 underline">browse</span>
+            <h3 className="text-sm font-bold text-slate-900 dark:text-white">
+              Drop PDF documents here to compress, or <span className="text-amber-600 dark:text-amber-400 underline">browse</span>
             </h3>
-            <p className="text-xs text-slate-400 mt-1">
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Supports single and batch processing. All operations take place 100% inside your local browser.
             </p>
           </div>
@@ -479,37 +479,37 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
         {/* Performance & Savings Metric Bar */}
         {completedItems.length > 0 && (
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 animate-fadeIn">
-            <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-center gap-3 shadow-md">
-              <div className="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 flex items-center gap-3 shadow-sm dark:shadow-md transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20 flex items-center justify-center text-amber-600 dark:text-amber-400 shrink-0">
                 <TrendingDown className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[11px] font-medium text-slate-400">Total Space Saved</div>
-                <div className="text-base font-bold text-emerald-400">
-                  {formatBytes(totalSavedBytes)} <span className="text-xs font-normal text-slate-400">(-{totalSavedPercentage}%)</span>
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Total Space Saved</div>
+                <div className="text-base font-bold text-emerald-600 dark:text-emerald-400">
+                  {formatBytes(totalSavedBytes)} <span className="text-xs font-normal text-slate-500 dark:text-slate-400">(-{totalSavedPercentage}%)</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-center gap-3 shadow-md">
-              <div className="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 flex items-center gap-3 shadow-sm dark:shadow-md transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-500/10 border border-blue-200 dark:border-blue-500/20 flex items-center justify-center text-blue-600 dark:text-blue-400 shrink-0">
                 <FileText className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[11px] font-medium text-slate-400">Original → Compressed Size</div>
-                <div className="text-xs font-semibold text-slate-300">
-                  {formatBytes(totalOriginalBytes)} → <span className="text-amber-400 font-bold">{formatBytes(totalCompressedBytes)}</span>
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Original → Compressed Size</div>
+                <div className="text-xs font-semibold text-slate-700 dark:text-slate-300">
+                  {formatBytes(totalOriginalBytes)} → <span className="text-amber-600 dark:text-amber-400 font-bold">{formatBytes(totalCompressedBytes)}</span>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 flex items-center gap-3 shadow-md">
-              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+            <div className="p-4 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 flex items-center gap-3 shadow-sm dark:shadow-md transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                 <CheckCircle2 className="w-5 h-5" />
               </div>
               <div>
-                <div className="text-[11px] font-medium text-slate-400">Optimization Status</div>
-                <div className="text-xs font-semibold text-white">
+                <div className="text-[11px] font-medium text-slate-500 dark:text-slate-400">Optimization Status</div>
+                <div className="text-xs font-semibold text-slate-900 dark:text-white">
                   {completedItems.length} of {queue.length} files compressed
                 </div>
               </div>
@@ -522,7 +522,7 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-2">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-400">
                   Compression Queue ({queue.length} items)
                 </h3>
               </div>
@@ -530,7 +530,7 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
               <div className="flex items-center gap-2">
                 <button
                   onClick={handleClearQueue}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 text-xs font-medium transition-colors"
+                  className="px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 text-xs font-medium transition-colors"
                 >
                   Clear Queue
                 </button>
@@ -568,7 +568,7 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
                 return (
                   <div
                     key={item.id}
-                    className="p-4 rounded-xl border border-slate-700/80 bg-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-sm hover:border-slate-600 transition-colors"
+                    className="p-4 rounded-xl border border-slate-200 dark:border-slate-700/80 bg-white dark:bg-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xs dark:shadow-sm hover:border-slate-300 dark:hover:border-slate-600 transition-colors"
                   >
                     {/* File Meta */}
                     <div className="flex items-center gap-3 min-w-0 flex-1">

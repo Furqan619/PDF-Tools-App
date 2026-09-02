@@ -53,6 +53,18 @@ import {
   PdfEditorTool 
 } from './components/PdfEditorTool';
 import { 
+  ScanToPdfTool 
+} from './components/ScanToPdfTool';
+import { 
+  OrganizePdfTool 
+} from './components/OrganizePdfTool';
+import { 
+  RepairPdfTool 
+} from './components/RepairPdfTool';
+import { 
+  UnlockPdfTool 
+} from './components/UnlockPdfTool';
+import { 
   DropZone 
 } from './components/DropZone';
 import { 
@@ -83,7 +95,7 @@ import {
 } from './services/converterEngine';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'pdf-to-docx' | 'pdf-merge-split' | 'pdf-compress' | 'pdf-ocr-extract' | 'image-to-pdf' | 'pdf-to-excel' | 'pdf-protect-watermark' | 'pdf-to-image' | 'pdf-page-numbers' | 'pdf-crop' | 'html-to-pdf' | 'pdf-to-pptx' | 'powerpoint-to-pdf' | 'excel-to-pdf' | 'edit-pdf'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'pdf-to-docx' | 'pdf-merge-split' | 'pdf-compress' | 'pdf-ocr-extract' | 'image-to-pdf' | 'pdf-to-excel' | 'pdf-protect-watermark' | 'pdf-to-image' | 'pdf-page-numbers' | 'pdf-crop' | 'html-to-pdf' | 'pdf-to-pptx' | 'powerpoint-to-pdf' | 'excel-to-pdf' | 'edit-pdf' | 'scan-to-pdf' | 'organize-pdf' | 'repair-pdf' | 'unlock-pdf'>('dashboard');
   const [queue, setQueue] = useState<QueueItem[]>([]);
   const [globalSettings, setGlobalSettings] = useState<ConversionSettings>(DEFAULT_SETTINGS);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -279,6 +291,14 @@ export default function App() {
             setCurrentView('excel-to-pdf');
           } else if (appId === 'edit-pdf') {
             setCurrentView('edit-pdf');
+          } else if (appId === 'scan-to-pdf') {
+            setCurrentView('scan-to-pdf');
+          } else if (appId === 'organize-pdf') {
+            setCurrentView('organize-pdf');
+          } else if (appId === 'repair-pdf') {
+            setCurrentView('repair-pdf');
+          } else if (appId === 'unlock-pdf') {
+            setCurrentView('unlock-pdf');
           }
         }}
         activeQueueCount={queue.length}
@@ -362,6 +382,42 @@ export default function App() {
   if (currentView === 'pdf-crop') {
     return (
       <PdfCropperTool
+        onNavigateToDashboard={() => setCurrentView('dashboard')}
+      />
+    );
+  }
+
+  // If in Scan to PDF view
+  if (currentView === 'scan-to-pdf') {
+    return (
+      <ScanToPdfTool
+        onNavigateToDashboard={() => setCurrentView('dashboard')}
+      />
+    );
+  }
+
+  // If in Organize PDF view
+  if (currentView === 'organize-pdf') {
+    return (
+      <OrganizePdfTool
+        onNavigateToDashboard={() => setCurrentView('dashboard')}
+      />
+    );
+  }
+
+  // If in Repair PDF view
+  if (currentView === 'repair-pdf') {
+    return (
+      <RepairPdfTool
+        onNavigateToDashboard={() => setCurrentView('dashboard')}
+      />
+    );
+  }
+
+  // If in Unlock PDF view
+  if (currentView === 'unlock-pdf') {
+    return (
+      <UnlockPdfTool
         onNavigateToDashboard={() => setCurrentView('dashboard')}
       />
     );

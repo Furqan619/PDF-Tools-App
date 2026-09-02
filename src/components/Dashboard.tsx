@@ -14,6 +14,8 @@ import {
   Presentation,
   FileSpreadsheet,
   Edit3,
+  Smartphone,
+  Camera,
   ArrowRight, 
   Search, 
   Sparkles, 
@@ -23,7 +25,9 @@ import {
   Cpu, 
   Lock, 
   HelpCircle,
-  LayoutGrid
+  LayoutGrid,
+  Wrench,
+  Unlock
 } from 'lucide-react';
 import { AppCardItem, AppCategory } from '../types';
 import { APP_CATALOG, APP_CATEGORIES } from '../services/appCatalog';
@@ -83,6 +87,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ onSelectApp, activeQueueCo
         return <FileSpreadsheet className={className} />;
       case 'Edit3':
         return <Edit3 className={className} />;
+      case 'Smartphone':
+        return <Smartphone className={className} />;
+      case 'Camera':
+        return <Camera className={className} />;
+      case 'LayoutGrid':
+        return <LayoutGrid className={className} />;
+      case 'Wrench':
+        return <Wrench className={className} />;
+      case 'Unlock':
+        return <Unlock className={className} />;
       default:
         return <FileText className={className} />;
     }
