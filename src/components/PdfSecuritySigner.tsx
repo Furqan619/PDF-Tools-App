@@ -50,6 +50,7 @@ import {
 import { pdfjsLib } from '../services/pdfWorker';
 import { saveAs } from 'file-saver';
 import confetti from 'canvas-confetti';
+import { ThemeToggle } from './ThemeToggle';
 
 interface PdfSecuritySignerProps {
   onNavigateToDashboard: () => void;
@@ -433,31 +434,31 @@ export const PdfSecuritySigner: React.FC<PdfSecuritySignerProps> = ({ onNavigate
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans">
+    <div className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200">
       {/* Top Header */}
-      <header className="bg-slate-900/90 backdrop-blur border-b border-slate-800 sticky top-0 z-40 px-4 py-3 sm:px-6">
+      <header className="bg-white/95 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800 sticky top-0 z-40 px-4 py-3 sm:px-6 transition-colors">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               onClick={onNavigateToDashboard}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 transition-colors"
             >
               <ChevronLeft className="w-4 h-4" />
               <span>Back to Suite</span>
             </button>
-            <div className="h-5 w-px bg-slate-800 hidden sm:block" />
+            <div className="h-5 w-px bg-slate-200 dark:bg-slate-700 hidden sm:block" />
             <div className="flex items-center gap-2.5">
-              <div className="p-2 rounded-lg bg-sky-500/10 border border-sky-500/30 text-sky-400">
+              <div className="p-2 rounded-lg bg-sky-50 dark:bg-sky-500/10 border border-sky-200 dark:border-sky-500/30 text-sky-600 dark:text-sky-400">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <h1 className="text-base font-semibold text-white tracking-tight flex items-center gap-2">
+                <h1 className="text-base font-bold text-slate-900 dark:text-white tracking-tight flex items-center gap-2">
                   <span>PDF Security, Watermark & Sign</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-sky-500/20 text-sky-300 font-normal border border-sky-500/30">
+                  <span className="text-xs px-2 py-0.5 rounded-full bg-sky-50 dark:bg-sky-500/20 text-sky-700 dark:text-sky-300 font-normal border border-sky-200 dark:border-sky-500/30">
                     AES-Ready
                   </span>
                 </h1>
-                <p className="text-xs text-slate-400 hidden sm:block">
+                <p className="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
                   Watermark stamping, digital calligraphy signatures, redactions & metadata protection
                 </p>
               </div>
@@ -465,7 +466,8 @@ export const PdfSecuritySigner: React.FC<PdfSecuritySignerProps> = ({ onNavigate
           </div>
 
           {/* Top Quick Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
             <div className="hidden md:flex items-center gap-1.5 bg-slate-900 border border-slate-800 p-1 rounded-lg">
               <button
                 onClick={() => handleLoadSample('nda')}

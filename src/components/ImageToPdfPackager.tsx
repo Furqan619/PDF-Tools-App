@@ -44,6 +44,7 @@ import {
   ImageCompression,
 } from '../services/imageToPdfPackager';
 import { generateSampleImagesGallery } from '../services/sampleImages';
+import { ThemeToggle } from './ThemeToggle';
 
 interface ImageToPdfPackagerProps {
   onNavigateToDashboard: () => void;
@@ -237,20 +238,20 @@ export function ImageToPdfPackager({ onNavigateToDashboard }: ImageToPdfPackager
   };
 
   return (
-    <div className="min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans selection:bg-rose-500/30">
+    <div className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200 selection:bg-rose-500/30">
       {/* Top Navigation Header */}
-      <header className="sticky top-0 z-30 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-3.5 flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-white/95 dark:bg-slate-900/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 lg:px-8 py-3.5 flex items-center justify-between transition-colors">
         <div className="flex items-center gap-3">
           <button
             id="back-to-dashboard-btn"
             onClick={onNavigateToDashboard}
-            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium border border-slate-700 transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white text-xs font-medium border border-slate-200 dark:border-slate-700 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Suite Dashboard</span>
           </button>
 
-          <div className="h-4 w-px bg-slate-800" />
+          <div className="h-4 w-px bg-slate-200 dark:bg-slate-700" />
 
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-rose-600 to-pink-600 flex items-center justify-center text-white shadow-md shadow-rose-600/20">
@@ -258,14 +259,14 @@ export function ImageToPdfPackager({ onNavigateToDashboard }: ImageToPdfPackager
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-sm font-bold text-white tracking-tight">
+                <h1 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">
                   Images to PDF Packager (JPG, PNG, WebP)
                 </h1>
-                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/30">
+                <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-rose-50 dark:bg-rose-500/15 text-rose-700 dark:text-rose-300 border border-rose-200 dark:border-rose-500/30">
                   Ready to Package
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Lossless packaging & layout arrangement for photos, scans, and graphic documents
               </p>
             </div>
@@ -273,7 +274,8 @@ export function ImageToPdfPackager({ onNavigateToDashboard }: ImageToPdfPackager
         </div>
 
         {/* Top Right Quick Actions */}
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           {images.length > 0 && (
             <button
               type="button"

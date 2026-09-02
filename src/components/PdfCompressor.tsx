@@ -31,6 +31,7 @@ import {
   downloadAllCompressedZip
 } from '../services/pdfCompressor';
 import { pdfjsLib } from '../services/pdfWorker';
+import { ThemeToggle } from './ThemeToggle';
 
 interface PdfCompressorProps {
   onNavigateToDashboard: () => void;
@@ -193,20 +194,20 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
     totalOriginalBytes > 0 ? ((totalSavedBytes / totalOriginalBytes) * 100).toFixed(1) : '0';
 
   return (
-    <div className="min-h-full flex flex-col bg-slate-900 text-slate-100 font-sans">
+    <div className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200">
       {/* Top Header */}
-      <header className="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-30">
+      <header className="border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-30 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               onClick={onNavigateToDashboard}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-xs font-medium transition-all group"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 text-xs font-medium transition-all group"
             >
-              <LayoutGrid className="w-4 h-4 text-amber-400 group-hover:scale-110 transition-transform" />
+              <LayoutGrid className="w-4 h-4 text-amber-500 dark:text-amber-400 group-hover:scale-110 transition-transform" />
               <span className="hidden sm:inline">Dashboard</span>
             </button>
 
-            <span className="text-slate-600 hidden sm:inline">/</span>
+            <span className="text-slate-400 dark:text-slate-600 hidden sm:inline">/</span>
 
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-md shadow-amber-500/20 ring-1 ring-white/10 shrink-0">
               <Minimize2 className="w-4 h-4 text-white" />
@@ -214,30 +215,33 @@ export const PdfCompressor: React.FC<PdfCompressorProps> = ({ onNavigateToDashbo
 
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
-                  PDF <span className="text-amber-400 font-mono text-xs px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/20">Compressor</span>
+                <h1 className="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+                  PDF <span className="text-amber-600 dark:text-amber-400 font-mono text-xs px-1.5 py-0.5 rounded bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/20">Compressor</span>
                 </h1>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
                   <Lock className="w-3 h-3" />
                   <span className="hidden xs:inline">100% In-Browser</span>
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 hidden md:block">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 hidden md:block">
                 High-performance PDF size reduction, image resampling, stream optimization & visual comparison
               </p>
             </div>
           </div>
 
           {/* Quick Header Actions */}
-          {completedItems.length > 0 && (
-            <button
-              onClick={handleDownloadAll}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold shadow-lg shadow-amber-500/20 transition-all cursor-pointer"
-            >
-              <Archive className="w-3.5 h-3.5" />
-              <span>Download All ({completedItems.length} ZIP)</span>
-            </button>
-          )}
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+            {completedItems.length > 0 && (
+              <button
+                onClick={handleDownloadAll}
+                className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold shadow-lg shadow-amber-500/20 transition-all cursor-pointer"
+              >
+                <Archive className="w-3.5 h-3.5" />
+                <span>Download All ({completedItems.length} ZIP)</span>
+              </button>
+            )}
+          </div>
         </div>
       </header>
 

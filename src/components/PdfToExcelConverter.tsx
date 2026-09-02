@@ -32,6 +32,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { saveAs } from 'file-saver';
+import { ThemeToggle } from './ThemeToggle';
 import {
   DetectedTable,
   ExtractionOptions,
@@ -343,39 +344,40 @@ export function PdfToExcelConverter({ onNavigateToDashboard }: PdfToExcelConvert
   };
 
   return (
-    <div className="min-h-full flex flex-col bg-slate-950 text-slate-100 font-sans">
+    <div className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200">
       {/* Top Header */}
-      <header className="border-b border-slate-800/80 bg-slate-900/90 backdrop-blur-md sticky top-0 z-30 px-4 sm:px-6 py-3.5 flex items-center justify-between shadow-sm">
+      <header className="border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-30 px-4 sm:px-6 py-3.5 flex items-center justify-between shadow-xs transition-colors">
         <div className="flex items-center gap-3">
           <button
             onClick={onNavigateToDashboard}
-            className="flex items-center gap-2 text-slate-400 hover:text-white px-3 py-1.5 rounded-lg hover:bg-slate-800/80 transition-colors text-sm font-medium border border-transparent hover:border-slate-700"
+            className="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-xs font-medium border border-slate-200 dark:border-slate-700"
           >
             <ArrowLeft className="w-4 h-4" />
             <span className="hidden sm:inline">Suite Dashboard</span>
           </button>
-          <div className="h-5 w-px bg-slate-800" />
+          <div className="h-5 w-px bg-slate-200 dark:bg-slate-700" />
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-md shadow-cyan-500/20">
               <FileSpreadsheet className="w-5 h-5 text-white" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-base font-semibold text-white tracking-tight">
+                <h1 className="text-base font-bold text-slate-900 dark:text-white tracking-tight">
                   PDF Tables to Excel (.xlsx)
                 </h1>
-                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+                <span className="px-2 py-0.5 text-[10px] font-semibold tracking-wide uppercase rounded-full bg-cyan-50 dark:bg-cyan-500/10 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-500/30">
                   Ready
                 </span>
               </div>
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Extract structured tabular data, balance sheets & rosters into Microsoft Excel
               </p>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
+          <ThemeToggle />
           {tables.length > 0 && (
             <>
               <button
@@ -383,7 +385,7 @@ export function PdfToExcelConverter({ onNavigateToDashboard }: PdfToExcelConvert
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${
                   showPdfVisualizer
                     ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/40'
-                    : 'bg-slate-800 text-slate-300 border-slate-700 hover:bg-slate-700'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700'
                 }`}
                 title="Toggle PDF document preview overlay"
               >

@@ -32,6 +32,7 @@ import {
   ShieldCheck,
   X
 } from 'lucide-react';
+import { ThemeToggle } from './ThemeToggle';
 import {
   OcrLanguage,
   OcrSettings,
@@ -220,20 +221,20 @@ export const PdfOcrExtractor: React.FC<PdfOcrExtractorProps> = ({ onNavigateToDa
       : 0;
 
   return (
-    <div className="min-h-full flex flex-col bg-slate-900 text-slate-100 font-sans">
+    <div className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-200">
       {/* Top Header */}
-      <header className="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-30">
+      <header className="border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/90 backdrop-blur sticky top-0 z-30 transition-colors">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
               onClick={onNavigateToDashboard}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 text-xs font-medium transition-all group"
+              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 text-xs font-medium transition-all group"
             >
-              <LayoutGrid className="w-4 h-4 text-purple-400 group-hover:scale-110 transition-transform" />
+              <LayoutGrid className="w-4 h-4 text-purple-500 dark:text-purple-400 group-hover:scale-110 transition-transform" />
               <span className="hidden sm:inline">Dashboard</span>
             </button>
 
-            <span className="text-slate-600 hidden sm:inline">/</span>
+            <span className="text-slate-400 dark:text-slate-600 hidden sm:inline">/</span>
 
             <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-600 to-violet-700 flex items-center justify-center shadow-md shadow-purple-500/20 ring-1 ring-white/10 shrink-0">
               <ScanText className="w-4 h-4 text-white" />
@@ -241,22 +242,23 @@ export const PdfOcrExtractor: React.FC<PdfOcrExtractorProps> = ({ onNavigateToDa
 
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-1.5">
-                  OCR Text <span className="text-purple-400 font-mono text-xs px-1.5 py-0.5 rounded bg-purple-500/10 border border-purple-500/20">& Layout Extractor</span>
+                <h1 className="text-base sm:text-lg font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5">
+                  OCR Text <span className="text-purple-600 dark:text-purple-400 font-mono text-xs px-1.5 py-0.5 rounded bg-purple-50 dark:bg-purple-500/10 border border-purple-200 dark:border-purple-500/20">& Layout Extractor</span>
                 </h1>
-                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-500/20">
                   <ShieldCheck className="w-3 h-3" />
                   <span className="hidden xs:inline">100% In-Browser</span>
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400 hidden md:block">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400 hidden md:block">
                 Deep optical character recognition, layout structure parsing, markdown formatting & searchable PDF generation
               </p>
             </div>
           </div>
 
           {/* Quick Header Actions */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
             {completedItems.length > 0 && (
               <button
                 onClick={() => downloadAllOcrZip(completedItems)}
