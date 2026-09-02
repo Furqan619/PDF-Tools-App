@@ -1,0 +1,6 @@
+{
+  "name": "PDF to Word Converter",
+  "description": "Fast, modular document tools suite: high-fidelity PDF to Word converter, lossless PDF merger & page splitter, intelligent PDF compressor, OCR text extractor, Images to PDF packager, PDF Tables to Excel (.xlsx), PDF Security, Watermark & Sign, and PDF to Image (PNG, JPG, WebP) converter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
