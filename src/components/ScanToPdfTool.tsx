@@ -47,7 +47,7 @@ interface ScannedPage {
 
 export const ScanToPdfTool: React.FC<ScanToPdfToolProps> = ({ onNavigateToDashboard }) => {
   const [pages, setPages] = useState<ScannedPage[]>([]);
-  const [activeTab, setActiveTab] = useState<'camera' | 'mobile_qr' | 'upload'>('mobile_qr');
+  const [activeTab, setActiveTab] = useState<'camera' | 'upload'>('camera');
   const [outputFileName, setOutputFileName] = useState('Mobile_Document_Scan.pdf');
   const [pageSize, setPageSize] = useState<'a4' | 'letter' | 'fit'>('a4');
   const [imageFilterPreset, setImageFilterPreset] = useState<'original' | 'magic' | 'bw'>('magic');
@@ -366,24 +366,7 @@ export const ScanToPdfTool: React.FC<ScanToPdfToolProps> = ({ onNavigateToDashbo
       {/* Main Workspace */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
         {/* Source Mode Selector */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <button
-            onClick={() => setActiveTab('mobile_qr')}
-            className={`p-4 rounded-2xl border text-left transition-all flex items-center gap-4 ${
-              activeTab === 'mobile_qr'
-                ? 'bg-rose-50 dark:bg-rose-500/10 border-rose-300 dark:border-rose-500/50 shadow-sm ring-2 ring-rose-500/20'
-                : 'bg-white dark:bg-slate-800/80 border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600'
-            }`}
-          >
-            <div className="w-12 h-12 rounded-xl bg-rose-100 dark:bg-rose-500/20 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
-              <QrCode className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Mobile Camera Sync</h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Scan via QR code & snap pages with phone</p>
-            </div>
-          </button>
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <button
             onClick={() => setActiveTab('camera')}
             className={`p-4 rounded-2xl border text-left transition-all flex items-center gap-4 ${
@@ -419,47 +402,6 @@ export const ScanToPdfTool: React.FC<ScanToPdfToolProps> = ({ onNavigateToDashbo
           </button>
         </div>
 
-        {/* Active Tab Panel */}
-        {activeTab === 'mobile_qr' && (
-          <div className="p-8 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-sm space-y-6 text-center max-w-2xl mx-auto">
-            <div className="w-20 h-20 rounded-2xl bg-rose-50 dark:bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-500/20 flex items-center justify-center mx-auto shadow-inner">
-              <Smartphone className="w-10 h-10 animate-pulse" />
-            </div>
-            <div className="space-y-2">
-              <h2 className="text-lg font-bold text-slate-900 dark:text-white">Scan Document with Mobile Device</h2>
-              <p className="text-xs text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
-                Capture document scans from your mobile device and send them instantly to your browser. Point your phone camera at the QR code below or test instant transfer.
-              </p>
-            </div>
-
-            {/* Simulated QR Code Box */}
-            <div className="p-6 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 inline-block space-y-3">
-              <div className="w-48 h-48 bg-white p-3 rounded-lg border border-slate-200 flex items-center justify-center mx-auto shadow-xs">
-                <div className="grid grid-cols-5 gap-2 w-full h-full p-2 bg-slate-900 rounded text-white items-center justify-center text-center font-mono text-[10px]">
-                  <div className="col-span-5 bg-white text-slate-900 font-bold py-1">SECURE SYNC QR</div>
-                  <div className="bg-rose-600 p-2">■</div>
-                  <div className="bg-white text-black p-2">□</div>
-                  <div className="bg-rose-600 p-2">■</div>
-                  <div className="bg-white text-black p-2">□</div>
-                  <div className="bg-rose-600 p-2">■</div>
-                  <div className="col-span-5 text-emerald-400 text-xs">READY TO PAIR</div>
-                </div>
-              </div>
-              <div className="text-[11px] text-slate-500 font-mono">Session ID: #SCAN-9824-BROWSER</div>
-            </div>
-
-            <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <button
-                onClick={handleSimulateMobileScan}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-rose-600 to-pink-600 text-white font-semibold text-xs shadow-md shadow-rose-500/20 hover:from-rose-500 hover:to-pink-500 transition-all flex items-center justify-center gap-2"
-              >
-                <Sparkles className="w-4 h-4" />
-                <span>Simulate Mobile Camera Scan Capture ({simulatedMobilePages})</span>
-              </button>
-            </div>
-          </div>
-        )}
-
         {activeTab === 'camera' && (
           <div className="p-6 rounded-2xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 shadow-sm space-y-4">
             <div className="flex items-center justify-between">
@@ -474,10 +416,10 @@ export const ScanToPdfTool: React.FC<ScanToPdfToolProps> = ({ onNavigateToDashbo
               <div className="p-6 rounded-xl bg-amber-50 dark:bg-amber-500/10 border border-amber-200 dark:border-amber-500/30 text-amber-800 dark:text-amber-200 text-xs text-center space-y-3">
                 <p>{cameraError}</p>
                 <button
-                  onClick={() => setActiveTab('mobile_qr')}
+                  onClick={() => setActiveTab('upload')}
                   className="px-4 py-2 rounded-lg bg-amber-600 text-white font-semibold"
                 >
-                  Switch to Mobile QR Sync
+                  Switch to File Upload
                 </button>
               </div>
             ) : (

@@ -38,8 +38,11 @@ import {
   PdfCropperTool 
 } from './components/PdfCropperTool';
 import { 
-  HtmlToPdfTool 
-} from './components/HtmlToPdfTool';
+  PdfToHtmlTool 
+} from './components/PdfToHtmlTool';
+import { 
+  PdfToMarkdownTool 
+} from './components/PdfToMarkdownTool';
 import { 
   PdfToPptxTool 
 } from './components/PdfToPptxTool';
@@ -64,6 +67,9 @@ import {
 import { 
   UnlockPdfTool 
 } from './components/UnlockPdfTool';
+import { 
+  WordToPdfTool 
+} from './components/WordToPdfTool';
 import { 
   DropZone 
 } from './components/DropZone';
@@ -95,7 +101,7 @@ import {
 } from './services/converterEngine';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'pdf-to-docx' | 'pdf-merge-split' | 'pdf-compress' | 'pdf-ocr-extract' | 'image-to-pdf' | 'pdf-to-excel' | 'pdf-protect-watermark' | 'pdf-to-image' | 'pdf-page-numbers' | 'pdf-crop' | 'html-to-pdf' | 'pdf-to-pptx' | 'powerpoint-to-pdf' | 'excel-to-pdf' | 'edit-pdf' | 'scan-to-pdf' | 'organize-pdf' | 'repair-pdf' | 'unlock-pdf'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'pdf-to-docx' | 'pdf-merge-split' | 'pdf-compress' | 'pdf-ocr-extract' | 'image-to-pdf' | 'pdf-to-excel' | 'pdf-protect-watermark' | 'pdf-to-image' | 'pdf-page-numbers' | 'pdf-crop' | 'pdf-to-html' | 'pdf-to-markdown' | 'pdf-to-pptx' | 'powerpoint-to-pdf' | 'excel-to-pdf' | 'edit-pdf' | 'scan-to-pdf' | 'organize-pdf' | 'repair-pdf' | 'unlock-pdf' | 'word-to-pdf'>('dashboard');
   const [queue, setQueue] = useState<QueueItem[]>([]);
   const [globalSettings, setGlobalSettings] = useState<ConversionSettings>(DEFAULT_SETTINGS);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -281,8 +287,10 @@ export default function App() {
             setCurrentView('pdf-page-numbers');
           } else if (appId === 'pdf-crop') {
             setCurrentView('pdf-crop');
-          } else if (appId === 'html-to-pdf') {
-            setCurrentView('html-to-pdf');
+          } else if (appId === 'pdf-to-html') {
+            setCurrentView('pdf-to-html');
+          } else if (appId === 'pdf-to-markdown') {
+            setCurrentView('pdf-to-markdown');
           } else if (appId === 'pdf-to-pptx') {
             setCurrentView('pdf-to-pptx');
           } else if (appId === 'powerpoint-to-pdf') {
@@ -423,10 +431,28 @@ export default function App() {
     );
   }
 
-  // If in HTML to PDF view
-  if (currentView === 'html-to-pdf') {
+  // If in Word to PDF view
+  if (currentView === 'word-to-pdf') {
     return (
-      <HtmlToPdfTool
+      <WordToPdfTool
+        onNavigateToDashboard={() => setCurrentView('dashboard')}
+      />
+    );
+  }
+
+  // If in PDF to HTML view
+  if (currentView === 'pdf-to-html') {
+    return (
+      <PdfToHtmlTool
+        onNavigateToDashboard={() => setCurrentView('dashboard')}
+      />
+    );
+  }
+
+  // If in PDF to Markdown view
+  if (currentView === 'pdf-to-markdown') {
+    return (
+      <PdfToMarkdownTool
         onNavigateToDashboard={() => setCurrentView('dashboard')}
       />
     );
