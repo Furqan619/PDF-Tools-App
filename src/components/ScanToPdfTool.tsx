@@ -424,7 +424,7 @@ export const ScanToPdfTool: React.FC<ScanToPdfToolProps> = ({ onNavigateToDashbo
               </div>
             ) : (
               <div className="space-y-4">
-                <div className="relative rounded-xl overflow-hidden bg-slate-950 aspect-video flex items-center justify-center border border-slate-800 shadow-inner">
+                <div className="relative rounded-xl overflow-hidden bg-slate-950 aspect-[9/16] max-w-sm mx-auto flex items-center justify-center border border-slate-800 shadow-inner">
                   <video
                     ref={videoRef}
                     playsInline

@@ -96,7 +96,7 @@ export const APP_CATALOG: AppCardItem[] = [
   },
   {
     id: 'pdf-to-docx',
-    title: 'PDF to Word (.docx) Converter',
+    title: 'PDF to Word',
     shortName: 'PDF to Word',
     description: 'Transform complex PDFs into fully editable Microsoft Word documents with 100% editable text, preserved font styles, tables, and aligned image figures.',
     category: 'converters',
@@ -162,7 +162,7 @@ export const APP_CATALOG: AppCardItem[] = [
   },
   {
     id: 'pdf-page-numbers',
-    title: 'PDF Page Numbers (Header & Footer)',
+    title: 'PDF Page Numbers',
     shortName: 'PDF Page Numbers',
     description: 'Add clean, customizable page numbers, headers, and footers into any PDF with 6-point visual positioning, Roman/Alpha formats, and cover page exclusions.',
     category: 'organization',
@@ -184,8 +184,8 @@ export const APP_CATALOG: AppCardItem[] = [
   },
   {
     id: 'powerpoint-to-pdf',
-    title: 'Word to PDF',
-    shortName: 'Word to PDF',
+    title: 'PowerPoint to PDF',
+    shortName: 'PowerPoint to PDF',
     description: 'Make PowerPoint and PPTX slideshows easy to view by converting them to PDF.',
     category: 'converters',
     status: 'active',
@@ -375,8 +375,8 @@ export const APP_CATALOG: AppCardItem[] = [
   },
   {
     id: 'image-to-pdf',
-    title: 'Images to PDF Packager (JPG, PNG, WebP)',
-    shortName: 'Images to PDF Packager',
+    title: 'Image to PDF',
+    shortName: 'Image to PDF',
     description: 'Convert collections of photos, screenshots, and scanned receipts (JPG, PNG, WebP, BMP) into clean, standard PDF documents with customizable page margins & multi-image layouts.',
     category: 'converters',
     status: 'active',
@@ -395,7 +395,7 @@ export const APP_CATALOG: AppCardItem[] = [
   },
   {
     id: 'pdf-to-excel',
-    title: 'PDF Tables to Excel (.xlsx)',
+    title: 'PDF to Excel',
     shortName: 'PDF to Excel',
     description: 'Detect, extract, and convert structured data tables, payroll rosters, and financial balance sheets from PDF reports into clean Microsoft Excel (.xlsx) workbooks.',
     category: 'converters',
@@ -436,7 +436,7 @@ export const APP_CATALOG: AppCardItem[] = [
   },
   {
     id: 'pdf-to-image',
-    title: 'PDF to Image Converter (PNG, JPG, WebP)',
+    title: 'PDF to Image',
     shortName: 'PDF to Image',
     description: 'Render and extract PDF pages into high-resolution PNG, JPG, or WebP images with customizable DPI scaling (72 to 600 DPI), visual page selection, and batch ZIP export.',
     category: 'converters',
