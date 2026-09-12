@@ -71,6 +71,9 @@ import {
   WordToPdfTool 
 } from './components/WordToPdfTool';
 import { 
+  QrCodeGeneratorTool 
+} from './components/QrCodeGeneratorTool';
+import { 
   DropZone 
 } from './components/DropZone';
 import { 
@@ -101,7 +104,7 @@ import {
 } from './services/converterEngine';
 
 export default function App() {
-  const [currentView, setCurrentView] = useState<'dashboard' | 'pdf-to-docx' | 'pdf-merge-split' | 'pdf-compress' | 'pdf-ocr-extract' | 'image-to-pdf' | 'pdf-to-excel' | 'pdf-protect-watermark' | 'pdf-to-image' | 'pdf-page-numbers' | 'pdf-crop' | 'pdf-to-html' | 'pdf-to-markdown' | 'pdf-to-pptx' | 'powerpoint-to-pdf' | 'excel-to-pdf' | 'edit-pdf' | 'scan-to-pdf' | 'organize-pdf' | 'repair-pdf' | 'unlock-pdf' | 'word-to-pdf'>('dashboard');
+  const [currentView, setCurrentView] = useState<'dashboard' | 'pdf-to-docx' | 'pdf-merge-split' | 'pdf-compress' | 'pdf-ocr-extract' | 'image-to-pdf' | 'pdf-to-excel' | 'pdf-protect-watermark' | 'pdf-to-image' | 'pdf-page-numbers' | 'pdf-crop' | 'pdf-to-html' | 'pdf-to-markdown' | 'pdf-to-pptx' | 'powerpoint-to-pdf' | 'excel-to-pdf' | 'edit-pdf' | 'scan-to-pdf' | 'organize-pdf' | 'repair-pdf' | 'unlock-pdf' | 'word-to-pdf' | 'qr-code-generator'>('dashboard');
   const [queue, setQueue] = useState<QueueItem[]>([]);
   const [globalSettings, setGlobalSettings] = useState<ConversionSettings>(DEFAULT_SETTINGS);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -307,6 +310,8 @@ export default function App() {
             setCurrentView('repair-pdf');
           } else if (appId === 'unlock-pdf') {
             setCurrentView('unlock-pdf');
+          } else if (appId === 'qr-code-generator') {
+            setCurrentView('qr-code-generator');
           }
         }}
         activeQueueCount={queue.length}
@@ -489,6 +494,15 @@ export default function App() {
   if (currentView === 'edit-pdf') {
     return (
       <PdfEditorTool
+        onNavigateToDashboard={() => setCurrentView('dashboard')}
+      />
+    );
+  }
+
+  // If in QR Code Generator view
+  if (currentView === 'qr-code-generator') {
+    return (
+      <QrCodeGeneratorTool
         onNavigateToDashboard={() => setCurrentView('dashboard')}
       />
     );
